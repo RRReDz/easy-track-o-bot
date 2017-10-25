@@ -1,0 +1,14 @@
+{
+  "name": "easy-track-o-bot",
+  "version": "1.0.0",
+  "description": "Javascript wrapper of track-o-bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "track-o-bot"
+  ],
+  "author": "Riccardo Rossi <riki.redz@gmail.com>",
+  "license": "ISC"
+}
