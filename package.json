@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Javascript wrapper of track-o-bot.",
   "main": "index.js",
+  "dependencies": {
+    "request": "*"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +13,10 @@
     "track-o-bot"
   ],
   "author": "Riccardo Rossi <riki.redz@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nyc": "^11.2.1",
+    "standard": "^10.0.3",
+    "tap": "^10.7.2"
+  }
 }
