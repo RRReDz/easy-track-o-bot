@@ -1,22 +1,23 @@
 {
-  "name": "easy-track-o-bot",
-  "version": "1.0.0",
-  "description": "Javascript wrapper of track-o-bot.",
-  "main": "index.js",
-  "dependencies": {
-    "request": "*"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "track-o-bot"
-  ],
-  "author": "Riccardo Rossi <riki.redz@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "nyc": "^11.2.1",
-    "standard": "^10.0.3",
-    "tap": "^10.7.2"
-  }
+    "name": "easy-track-o-bot",
+    "version": "1.0.0",
+    "description": "Javascript wrapper of track-o-bot.",
+    "main": "index.js",
+    "dependencies": {
+        "request": "*"
+    },
+    "scripts": {
+        "test": "tap --coverage test/index.js",
+        "posttest": "standard"
+    },
+    "keywords": [
+        "track-o-bot"
+    ],
+    "author": "Riccardo Rossi <riki.redz@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "nyc": "^11.2.1",
+        "standard": "^10.0.3",
+        "tap": "^10.7.2"
+    }
 }
