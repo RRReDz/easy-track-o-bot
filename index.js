@@ -1,3 +1,5 @@
+'use strict'
+
 var request = require('request-promise-native')
 
 exports.uploadGame = function (game, responseReadyCallback) {
