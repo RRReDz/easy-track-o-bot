@@ -1,49 +1,66 @@
-const test = require('tap').test;
+const test = require('tap').test
 
-const easyTrackOBot = require('../index.js');
+const easyTrackOBot = require('../index.js')
 
-test('upload_game test', function(t) {
+test('upload_game_OK test', function(t) {
 
     const gameOfTestCorrect = {
         "result": {
-            "hero": "Shaman",
-            "opponent": "Warrior",
             "mode": "ranked",
+            "hero": "Shaman",
+            "hero_deck": "Token",
+            "opponent": "Hunter",
+            "opponent_deck": "Midrange",
             "coin": true,
             "win": true,
-            "duration": 634,
-            "card_history": [{
-                    "card_id": "EX1_405",
-                    "player": "opponent"
-                },
-                {
-                    "card_id": "GAME_005",
-                    "player": "me",
-                    "turn": 3
-                }
-            ]
+            "duration": 228,
+            "card_history": []
         }
     }
 
+    easyTrackOBot.uploadGame(
+        gameOfTestCorrect,
+        (result) => {
+            t.is(typeof result, 'object')
+            t.ok(Object.keys(result).length > 0)
+
+            t.ok(result.hasOwnProperty("success"))
+            t.ok(result.hasOwnProperty("message"))
+            t.ok(result.hasOwnProperty("code"))
+            t.ok(result.hasOwnProperty("data"))
+
+            t.equal(result.success, true)
+            t.equal(result.message, "Game uploaded with success")
+            t.equal(result.code, 201)
+            t.ok(result.data.hasOwnProperty("result"))
+
+            t.end()
+        }
+    )
+
+})
+
+test('upload_game_KO test', function(t) {
     const gameOfTestIncorrect = {
         "result": ["This is obiviously not correct"]
     }
 
-    const resultCorrect = easyTrackOBot.uploadGame(gameOfTestCorrect);
-    t.is(typeof resultCorrect, 'object');
-    t.ok(Object.keys(resultCorrect).length > 0);
-    t.ok(resultCorrect.hasOwnProperty("success"))
-    t.ok(resultCorrect.hasOwnProperty("message"))
-    t.equal(resultCorrect.success, true);
-    t.equal(resultCorrect.message, "Game uploaded with success");
+    easyTrackOBot.uploadGame(
+        gameOfTestIncorrect,
+        (result) => {
+            t.is(typeof result, 'object')
+            t.ok(Object.keys(result).length > 0)
 
-    const resultIncorrect = easyTrackOBot.uploadGame(gameOfTestIncorrect);
-    t.is(typeof resultIncorrect, 'object');
-    t.ok(Object.keys(resultIncorrect).length > 0);
-    t.ok(resultIncorrect.hasOwnProperty("success"))
-    t.ok(resultIncorrect.hasOwnProperty("message"))
-    t.equal(resultIncorrect.success, false);
-    t.equal(resultIncorrect.message, "Game inserted is invalid");
+            t.ok(result.hasOwnProperty("success"))
+            t.ok(result.hasOwnProperty("message"))
+            t.ok(result.hasOwnProperty("code"))
+            t.ok(result.hasOwnProperty("data"))
 
-    t.end();
+            t.equal(result.success, false)
+            t.ok(result.code >= 300)
+
+            t.end()
+        }
+    )
+
 })
