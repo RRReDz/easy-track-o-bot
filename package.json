@@ -13,6 +13,7 @@
         "request-promise-native": "^1.0.5"
     },
     "scripts": {
+        "coverage": "nyc report --reporter=text-lcov | coveralls",
         "test": "tap --coverage test/index.js",
         "posttest": "standard",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
