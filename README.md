@@ -41,7 +41,7 @@ const fooGame = {
 
 ### Installation
 
-Not yet available
+Not yet available, stay tuned! 8-)
 ```
 npm install easy-track-o-bot
 ```
