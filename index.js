@@ -2,10 +2,12 @@
 
 var request = require('request-promise-native')
 
-exports.uploadGame = function (game, responseReadyCallback) {
-  let username = 'twilight-ysera-2686' // debug - TODO: REMOTE IT
-  let token = 'Rg22pzUVixQpm1aXJZCV' // debug - TODO: REMOVE IT
+function EasyTrackOBot (username, token) {
+  this.username = username
+  this._token = token
+}
 
+EasyTrackOBot.prototype.uploadGame = function (game, responseReadyCallback) {
     /* ------ DEBUG ------ */
     // console.log(JSON.stringify(game));
     // console.log(username);
@@ -41,3 +43,5 @@ exports.uploadGame = function (game, responseReadyCallback) {
           responseReadyCallback(rsp)
         })
 }
+
+module.exports = EasyTrackOBot

@@ -1,6 +1,6 @@
-const test = require('tap').test
+var test = require('tap').test
 
-const easyTrackOBot = require('../index.js')
+var EasyTrackOBot = require('../index.js')
 
 test('upload_game_OK test', function (t) {
   const gameOfTestCorrect = {
@@ -17,7 +17,8 @@ test('upload_game_OK test', function (t) {
     }
   }
 
-  easyTrackOBot.uploadGame(
+  var easyTrackOBotObj = new EasyTrackOBot('twilight-ysera-2686', 'Rg22pzUVixQpm1aXJZCV')
+  easyTrackOBotObj.uploadGame(
         gameOfTestCorrect,
         (result) => {
           t.is(typeof result, 'object')
@@ -43,7 +44,9 @@ test('upload_game_KO test', function (t) {
     'result': ['This is obiviously not correct']
   }
 
-  easyTrackOBot.uploadGame(
+  var easyTrackOBotObj = new EasyTrackOBot('twilight-ysera-2686', 'Rg22pzUVixQpm1aXJZCV')
+
+  easyTrackOBotObj.uploadGame(
         gameOfTestIncorrect,
         (result) => {
           t.is(typeof result, 'object')
