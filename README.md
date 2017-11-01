@@ -8,16 +8,16 @@ easy-track-o-bot is a javascript wrapper developed as npm module for [Track-o-bo
 [![Build Status](https://travis-ci.org/RRReDz/easy-track-o-bot.svg?branch=master)](https://travis-ci.org/RRReDz/easy-track-o-bot)
 [![Known Vulnerabilities](https://snyk.io/test/github/rrredz/easy-track-o-bot/badge.svg)](https://snyk.io/test/github/rrredz/easy-track-o-bot)
 
-## Getting Started
-
+## Usage
+That's pretty easy...
 ```js
-//Require library from node_modules
+//...require the module...
 var EasyTrackOBot = require('easy-track-o-bot')
 
-//Instantiate javascript object with track-o-bot username and token as parameters
+//...create the object passing username and token provided by track-o-bot...
 easyTrackOBotObj = new EasyTrackOBot('your-username', 'your-token')
 
-//Game of test to be uploaded
+//...get your game data...
 const fooGame = {
     'result': {
       'mode': 'ranked',
@@ -32,19 +32,14 @@ const fooGame = {
     }
   }
   
-  //Call to upload game
-  easyTrackOBotObj.uploadGame(
-        fooGame,
-        (result) => {
-          console.log(result.success)
-          console.log(result.message)
-          console.log(result.code)
-          console.log(result.data)
-        }
-    )
+  //...and upload it!
+  easyTrackOBotObj.uploadGame(fooGame, (result) => {
+        /* Your code here */
+      }
+  )
 ```
 
-### Prerequisites
+### Installation
 
 Not yet available
 ```
