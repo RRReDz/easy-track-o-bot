@@ -4,7 +4,7 @@ var request = require('request-promise-native')
 
 function EasyTrackOBot (username, token) {
   this.username = username
-  this._token = token
+  this.token = token
 }
 
 EasyTrackOBot.prototype.uploadGame = function (game, responseReadyCallback) {
@@ -15,7 +15,7 @@ EasyTrackOBot.prototype.uploadGame = function (game, responseReadyCallback) {
 
   var options = {
     method: 'POST',
-    uri: 'https://trackobot.com/profile/results.json?username=' + username + '&token=' + token,
+    uri: 'https://trackobot.com/profile/results.json?username=' + this.username + '&token=' + this.token,
     body: game,
     headers: {
       'Content-Type': 'application/json'
