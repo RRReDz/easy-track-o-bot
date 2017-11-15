@@ -86,7 +86,7 @@ EasyTrackOBot.prototype.getStats = function (
   var allowedRange = ['current_month', 'all', 'last_3_days', 'last_24_hours', 'custom']
   var allowedModes = ['ranked', 'arena', 'casual', 'friendly', 'all']
 
-  if (!allowedEndpoints.includes(statsType)) {
+  if (allowedEndpoints.indexOf(statsType) === -1) {
     let rsp = {
       'success': false,
       'message': 'statsType must be one of ' + allowedEndpoints
@@ -95,7 +95,7 @@ EasyTrackOBot.prototype.getStats = function (
     return false
   }
 
-  if (!allowedRange.includes(timeRange)) {
+  if (allowedRange.indexOf(timeRange) === -1) {
     let rsp = {
       'success': false,
       'message': 'timeRange must be one of ' + allowedRange
@@ -104,7 +104,7 @@ EasyTrackOBot.prototype.getStats = function (
     return false
   }
 
-  if (!allowedModes.includes(mode)) {
+  if (allowedModes.indexOf(mode) === -1) {
     let rsp = {
       'success': false,
       'message': 'mode must be one of ' + allowedModes
