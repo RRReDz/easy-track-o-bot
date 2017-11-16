@@ -1,6 +1,6 @@
 {
   "name": "easy-track-o-bot",
-  "version": "0.0.1-development",
+  "version": "0.0.2-development",
   "description": "Javascript wrapper of track-o-bot.",
   "repository": {
     "type": "git",
@@ -19,7 +19,10 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
-    "track-o-bot"
+    "track-o-bot",
+    "hearthstone",
+    "hs",
+    "tracker"
   ],
   "author": "Riccardo Rossi <riki.redz@gmail.com>",
   "license": "ISC",
