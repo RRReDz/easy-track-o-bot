@@ -1,17 +1,29 @@
 'use strict'
 
 var request = require('request-promise-native')
-
+  /**
+   * Constructor that initializes the EasyTrackOBot's object with the username and token of the user.
+   *
+   * @param {any} username Your track-o-bot username (You can find it under "Settings" -> "API" -> "Username")
+   * @param {any} token Your track-o-bot valid token (You can find it under "Settings" -> "API" -> "Token")
+   */
 function EasyTrackOBot (username, token) {
   this.username = username
   this.token = token
 }
 
+/**
+ * Uploads a new Hearthstone game's data
+ *
+ * Please check https://gist.github.com/stevschmid/120adcbc5f1f7cb31bc5 for "game" parameter validation
+ * @param {any} game Valid json object for track-o-bot
+ * @param {any} responseReadyCallback Callback that will be called once the request has been completed. Returns in the parameter 'rsp' a JSON object of the format {'success': true/false, 'code': 200/404/other codes, 'message': 'This is a message', 'data': <JSON payload>}
+ */
 EasyTrackOBot.prototype.uploadGame = function (game, responseReadyCallback) {
-  /* ------ DEBUG ------ */
-  // console.log(JSON.stringify(game));
-  // console.log(username);
-  // console.log(token);
+    /* ------ DEBUG ------ */
+    // console.log(JSON.stringify(game));
+    // console.log(username);
+    // console.log(token);
 
   var options = {
     method: 'POST',
@@ -25,25 +37,30 @@ EasyTrackOBot.prototype.uploadGame = function (game, responseReadyCallback) {
   }
 
   request(options)
-    .then(function (response) {
-      let rsp = {
-        'success': true,
-        'code': response.statusCode,
-        'message': 'Game uploaded with success',
-        'data': response.body
-      }
-      responseReadyCallback(rsp)
-    }).catch(function (response) {
-      let rsp = {
-        'success': false,
-        'code': response.error.status,
-        'message': response.error.error,
-        'data': null
-      }
-      responseReadyCallback(rsp)
-    })
+      .then(function (response) {
+        let rsp = {
+          'success': true,
+          'code': response.statusCode,
+          'message': 'Game uploaded with success',
+          'data': response.body
+        }
+        responseReadyCallback(rsp)
+      }).catch(function (response) {
+        let rsp = {
+          'success': false,
+          'code': response.error.status,
+          'message': response.error.error,
+          'data': null
+        }
+        responseReadyCallback(rsp)
+      })
 }
-
+  /**
+   * Create a new username and password in Trackobot
+   *
+   * @param {any} responseReadyCallback responseReadyCallback(rsp) ~ Callback that will be called once the request has been completed.
+   * Field "data" of the rsp object will be a JSON object like {'username': 'newuser', 'password': 'password'}
+   */
 EasyTrackOBot.prototype.createNewUser = function (responseReadyCallback) {
   var options = {
     method: 'POST',
@@ -52,25 +69,38 @@ EasyTrackOBot.prototype.createNewUser = function (responseReadyCallback) {
   }
 
   request(options)
-    .then(function (response) {
-      let rsp = {
-        'success': true,
-        'code': response.statusCode,
-        'message': 'User created with success',
-        'data': response.body
-      }
-      responseReadyCallback(rsp)
-    }).catch(function (err) {
-      let rsp = {
-        'success': false,
-        'code': err.response.statusCode,
-        'message': err.response.statusMessage,
-        'data': null
-      }
-      responseReadyCallback(rsp)
-    })
+      .then(function (response) {
+        let rsp = {
+          'success': true,
+          'code': response.statusCode,
+          'message': 'User created with success',
+          'data': response.body
+        }
+        responseReadyCallback(rsp)
+      }).catch(function (err) {
+        let rsp = {
+          'success': false,
+          'code': err.response.statusCode,
+          'message': err.response.statusMessage,
+          'data': null
+        }
+        responseReadyCallback(rsp)
+      })
 }
-
+  /**
+   * Get the user’s statistics by deck, class, or for arena.
+   *
+   * @param {any} statsType Stats type - Allowed values: ['classes', 'decks', 'arena']
+   * @param {any} timeRange Range of time - Allowed values: ['current_month', 'all', 'last_3_days', 'last_24_hours', 'custom']
+   * @param {any} mode Mode - ['ranked', 'arena', 'casual', 'friendly', 'all']
+   * @param {any} startTime Stats from date - Perceived if timeRange param has value 'custom' - Must be a date of format 'yyyy-mm-dd'
+   * @param {any} endTime Stats to date - Perceived if timeRange param has value 'custom' - Must be a date of format 'yyyy-mm-dd'
+   * @param {any} asHero Stats match playing Hero - Perceived if statsType param has value 'classes' - Hero name's first letter must be uppercase (Hunter, Druid...)
+   * @param {any} vsHero Stats match against Hero - Perceived if statsType param has value 'classes' - Hero name's first letter must be uppercase (Hunter, Druid...)
+   * @param {any} asDeck Stats match playing Deck - Perceived if statsType param has value 'decks' - Decks name's first letter must be uppercase (Combo, Token...)
+   * @param {any} vsDeck Stats match against Deck - Perceived if statsType param has value 'decks' - Decks name's first letter must be uppercase (Combo, Token...)
+   * @param {any} responseReadyCallback Callback - returns a JSON obj {'success': true, data': positiveResponse} in case of success, else {'success': false, 'message': 'Error message'}
+   */
 EasyTrackOBot.prototype.getStats = function (
   statsType,
   timeRange,
