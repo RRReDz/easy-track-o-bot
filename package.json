@@ -1,6 +1,6 @@
 {
   "name": "easy-track-o-bot",
-  "version": "0.0.3-development",
+  "version": "0.0.3",
   "description": "Javascript wrapper of track-o-bot.",
   "repository": {
     "type": "git",
