@@ -42,7 +42,6 @@ Please check [here](https://github.com/RRReDz/easy-track-o-bot/wiki/Documentatio
 
 ### Installation
 
-Not yet available, stay tuned! 8-)
 ```
 npm install easy-track-o-bot
 ```

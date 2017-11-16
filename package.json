@@ -1,33 +1,33 @@
 {
-    "name": "easy-track-o-bot",
-    "version": "0.0.0-development",
-    "description": "Javascript wrapper of track-o-bot.",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/RRReDz/easy-track-o-bot.git"
-    },
-    "main": "index.js",
-    "dependencies": {
-        "request": "*",
-        "request-promise": "^4.2.2",
-        "request-promise-native": "^1.0.5"
-    },
-    "scripts": {
-        "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "test": "tap --coverage test/index.js",
-        "posttest": "standard",
-        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-    },
-    "keywords": [
-        "track-o-bot"
-    ],
-    "author": "Riccardo Rossi <riki.redz@gmail.com>",
-    "license": "ISC",
-    "devDependencies": {
-        "coveralls": "^3.0.0",
-        "nyc": "^11.2.1",
-        "standard": "^10.0.3",
-        "tap": "^10.7.2",
-        "semantic-release": "^8.2.0"
-    }
+  "name": "easy-track-o-bot",
+  "version": "0.0.1-development",
+  "description": "Javascript wrapper of track-o-bot.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RRReDz/easy-track-o-bot.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "request": "*",
+    "request-promise": "^4.2.2",
+    "request-promise-native": "^1.0.5"
+  },
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "tap --coverage test/index.js",
+    "posttest": "standard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "keywords": [
+    "track-o-bot"
+  ],
+  "author": "Riccardo Rossi <riki.redz@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "nyc": "^11.2.1",
+    "standard": "^10.0.3",
+    "tap": "^10.7.2",
+    "semantic-release": "^8.2.0"
+  }
 }
