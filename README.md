@@ -38,6 +38,7 @@ const fooGame = {
       }
   )
 ```
+Please check [here](https://github.com/RRReDz/easy-track-o-bot/wiki/Documentation) for more detailed information about all available methods.
 
 ### Installation
 
